@@ -15,10 +15,12 @@ namespace UCS_APP.Controllers
     public class AlbumsController : Controller
     {
         private readonly UCS_APPContext _context;
-
+       
+        
+        // Searchstring validator function
         private bool StringValidator(string stringToValidate)
         {
-            // check if it is letter 97 to 122 and space 32
+            // Check if it is letter 97 to 122 (minuscule letters) and space 32 in Dec index
             var charArray = stringToValidate.ToCharArray();
             foreach (var letter in charArray)
             {
@@ -37,17 +39,16 @@ namespace UCS_APP.Controllers
         {
             _context = context;
         }
+
+        // Album Main Page
         public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            // Get Json
+            // Get Json and stock it
             var httpClient = new HttpClient();
-            // TODO Add Http errror
             var json = await httpClient.GetStringAsync("https://jsonplaceholder.typicode.com/albums");
             var albums = JsonConvert.DeserializeObject<Album[]>(json);
-            //Album albums = (Album)JsonConvert.DeserializeObject(json, typeof(Album));   
 
-
-
+            // Class albums by alpabetic order
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
             var album_list = from s in albums select s;

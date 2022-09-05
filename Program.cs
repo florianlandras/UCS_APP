@@ -29,8 +29,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Albums}/{action=Index}/{id?}");

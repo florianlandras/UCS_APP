@@ -3,12 +3,14 @@
 @{
     ViewData["Title"] = "Details";
 }
+
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
@@ -21,81 +23,66 @@
                 @Html.ActionLink( "Go back to Album", "index" , "Albums", new{@style="color:#000000;"})
             </button>
         </span>
-       
+
     </div>
 
 </nav>
-<body>
-  
-<p>
-</p>
 
-    
+
+<body>
+
+    <p>
+    </p>
+
+
     <div class="container text-center">
         <div class="row row-cols-3">
-    
-        @foreach (var item in Model)
-        {
 
-
-
-
-
-
+            @foreach (var item in Model)
+            {
 
                 <div class="col">
-                        <style>
-                            .btn-primary {
-                                --bs-btn-bg: #ffffff;
-                                --bs-btn-border-color: #ffffff;
-                                 --bs-btn-hover-bg: #ffffff;
-                                 --bs-btn-hover-border-color: #ffffff;
-                                   }
-                            
-                            
-                        </style>
+                    <style>
+                        .btn-primary {
+                            --bs-btn-bg: #ffffff;
+                            --bs-btn-border-color: #ffffff;
+                            --bs-btn-hover-bg: #ffffff;
+                            --bs-btn-hover-border-color: #ffffff;
+                        }
+                    </style>
 
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="@("#modal" + item.Id)">
-                            <img src ="@item.ThumbnailUrl">
-                        </button>
-                        
-                        
-                        <div class="modal fade" id="@("modal" +item.Id)"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-md">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <p style="text-align:center;">
-                                            <h5 class="modal-title" id="staticBackdropLabel">
-                                                Photo Title:
-                                                <p>
-                                                    @item.Title
-                                                </p>
-                                            </h5>
-                                         </p>
-                                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p style="text-align:center;"><img src="@item.Url" class="img-fluid"></p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        
-                                    </div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="@("#modal" + item.Id)">
+                        <img src="@item.ThumbnailUrl">
+                    </button>
+
+                    <div class="modal fade" id="@("modal" +item.Id)" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <p style="text-align:center;">
+                                        <h5 class="modal-title" id="staticBackdropLabel">
+                                            Photo Title:
+                                            <p>
+                                                @item.Title
+                                            </p>
+                                        </h5>
+                                    </p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p style="text-align:center;"><img src="@item.Url" class="img-fluid"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
                                 </div>
                             </div>
-                        </div>                   
-                 </div>
-                            
-                           
-                      
-
-                       
-
-        }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
-    </div>
-
-    
 
 </body>
 </html>
