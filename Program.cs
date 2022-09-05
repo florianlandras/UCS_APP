@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using UCS_APP.Data;
 var builder = WebApplication.CreateBuilder(args);
@@ -33,5 +35,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Albums}/{action=Index}/{id?}");
 
-
 app.Run();
+
